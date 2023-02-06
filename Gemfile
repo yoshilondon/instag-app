@@ -26,8 +26,11 @@ gem 'jbuilder', '~> 2.7'
 gem 'annotate'
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'bootstrap', '~> 4.1.1'
 gem 'devise'
 gem 'hamlit'
+gem 'jquery-rails'
+
 
 
 

@@ -4,12 +4,45 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title InstagApp
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    %script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/847e8f40f2.js"}
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  
   %body
-    %p yoshi
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    / Navigation Bar
+    %nav.navbar.navbar-light.bg-light.d-flex
+      .container
+        .logo
+          %a.navbar-brand
+            -# %i.fa-solid.fa-camera-retro.fa-xl
+            %p.title Instagram
+        -# .m-auto
+        -#   %form.form-inline.search-form
+        -#     %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "@search", :type => "search"}/
+        .user-section
+          %a
+            %i.fa-regular.fa-square-plus.fa-xl
+          %a
+            %i.fa-sharp.fa-solid.fa-heart.fa-xl
+          - if user_signed_in?
+            %a{"data-method" => "delete", :href => destroy_user_session_path}
+              %i.fa.fa-user.fa-xl
+          - else
+            %a{:href => new_user_session_path}
+              %i.fa-solid.fa-right-to-bracket.fa-xl
+    / Main content
+    %main.container{:style => "min-height: 500px;"}
+      = yield
+    / Footer
+    %footer.container.footer
+      %nav.navbar.d-flex
+        %p © 2022 INSTAGRAM
+    %header
+      - if flash.present?
+        .flash
+          - flash.each do |key, value|
+            %div{:class => key}
+              = value
+    
