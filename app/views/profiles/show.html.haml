@@ -1,0 +1,30 @@
+.profilePage 
+  .container
+    .profilePage_user_displayName 
+      = current_user.display_name   
+    .profilePage_image
+      = image_tag current_user.avatar_image 
+    .profilePage_dataBox 
+      .profilePage_dataBox_inner 
+        %p 44
+        %p Posts 
+      .profilePage_dataBox_inner
+        %p 44
+        %p Followers
+      .profilePage_dataBox_inner 
+        %p 44
+        %p Following
+    .profilePage_actionButton 
+      = link_to 'Edit', edit_profile_path 
+    .profilePage_imgBox 
+      = image_tag 'img3.png'
+      %div 
+        = image_tag 'img1.png'
+        = image_tag 'img2.png'
+    .profilePage_imgBox 
+      = image_tag 'img3.png'
+      %div 
+        = image_tag 'img1.png'
+        = image_tag 'img2.png'
+
+        

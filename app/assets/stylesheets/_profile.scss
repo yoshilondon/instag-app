@@ -1,0 +1,73 @@
+.profilePage {
+  padding-top :32px;
+  &_image{
+    position: relative;
+    width: 76.88px;
+    height: 76.88px;
+    border-radius: 50%;
+    margin: 0 auto 46px;
+    // &::before{
+    //   content: '';
+    //   position: absolute;
+    //   width: 84px;
+    //   height: 84px;
+    //   border: 1px solid #E91E63;
+    //   box-sizing: border-box;
+    //   border-radius: 50%;
+    //   top: 50%;
+    //   left: 50%;
+    //   transform: translate(-50%,-50%);
+    // }
+  }
+
+  &_user_displayName{
+    // position: absolute;
+    // height: 24px;
+    // left: 38.13%;
+    // right: 38.4%;
+    // top: calc(57% - 24px/2 - 348px);
+
+    font-family: 'Poppins Medium';
+    font-size: 16px;
+    line-height: 19px;
+    // display: flex;
+    // align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+
+    color: #333A42;
+  }
+
+  &_dataBox{
+    display: flex;
+    align-items: center;
+    margin: 0 auto 42px;
+    width: 241px;
+    &_inner{
+      &:nth-of-type(2){
+        margin: 0 20px 0 45px;
+      }
+      & p {
+        text-align: center;
+        font-family: Poppins;
+        font-size: 1.6rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.6;
+        &:first-of-type{
+          color: #333A42;
+        }
+        &:last-of-type{
+          color: #9E9E9E;
+        }
+      }
+    }
+  }
+  &_imgBox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+}
