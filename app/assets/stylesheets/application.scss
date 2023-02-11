@@ -17,6 +17,7 @@
  
  @import './common';
  @import './devise';
+ @import './profile';
 
 // .container{
 //   max-width: 1000px;
@@ -37,7 +38,7 @@
   font-size: 25px;
   font-weight: bold;
   font-style: italic;
-  margin-left: 10px;
+  // margin-left: 10px;
   }
 }
 .user-section{
