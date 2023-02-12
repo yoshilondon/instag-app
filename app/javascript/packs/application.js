@@ -7,6 +7,8 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import $ from 'jquery'
+import axios from 'axios'
 
 Rails.start()
 Turbolinks.start()
@@ -15,3 +17,12 @@ ActiveStorage.start()
 //= require jquery3
 //= require popper
 //= require bootstrap
+
+document.addEventListener('turbolinks:load', () => {
+  $('.profilePage_image').on('click', () => {
+    axios.get('/')
+      .then((response) => {
+        console.log(response)
+      })
+  })
+})
