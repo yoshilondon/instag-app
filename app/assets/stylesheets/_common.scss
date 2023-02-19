@@ -52,3 +52,16 @@ input {
     outline: none;
   }
 }
+
+.hidden{
+  display: none;
+}
+
+.submit-btn {
+  border: none;
+  font-family: sans-serif;
+  font-size: 10px;
+  margin-left: 5px;
+  color: #00ffff;
+  background-color: white;
+}
