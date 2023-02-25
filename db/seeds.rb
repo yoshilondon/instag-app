@@ -6,5 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Article.create({title: 'サンプルタイトル', content: 'サンプル記事を載せています。Rails勉強中!'})
-Article.create({title: 'アプリ作成中', content: 'アプリ作成課題挑戦中です。頑張ります!'})
+john = User.create!(email: 'john@example.com', password: 'password')
+emily = User.create!(email: 'emily@example.com', password: 'password')
+
+3.times do
+  john.articles.create!(
+    content: Faker::Lorem.sentence(word_count: 30)
+  )
+end
+
+3.times do
+  emily.articles.create!(
+    content: Faker::Lorem.sentence(word_count: 30)
+  )
+end
