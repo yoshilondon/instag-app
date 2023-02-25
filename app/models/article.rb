@@ -9,4 +9,5 @@
 #  updated_at :datetime         not null
 #
 class Article < ApplicationRecord
+  validates :content, presence: true
 end
