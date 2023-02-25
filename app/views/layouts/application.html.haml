@@ -12,27 +12,32 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   
   %body
-    / Navigation Bar
-    %nav.navbar.navbar-light.bg-light.d-flex
-      .container
-        .logo
-          %a.navbar-brand
-            -# %i.fa-solid.fa-camera-retro.fa-xl
-            %p.title Instagram
-        -# .m-auto
-        -#   %form.form-inline.search-form
-        -#     %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "@search", :type => "search"}/
-        .user-section
-          %a
-            %i.fa-regular.fa-square-plus.fa-xl
-          %a
-            %i.fa-sharp.fa-solid.fa-heart.fa-xl
-          - if user_signed_in?
-            %a{"data-method" => "delete", :href => destroy_user_session_path}
-              %i.fa.fa-user.fa-xl
-          - else
-            %a{:href => new_user_session_path}
-              %i.fa-solid.fa-right-to-bracket.fa-xl
+    %header
+      / Navigation Bar
+      %nav.navbar.navbar-light.bg-light.d-flex
+        .container
+          .logo
+            %a.navbar-brand
+              -# %i.fa-solid.fa-camera-retro.fa-xl
+              %p.title Instagram
+          -# .m-auto
+          -#   %form.form-inline.search-form
+          -#     %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "@search", :type => "search"}/
+          .user-section
+            %a
+              %i.fa-regular.fa-square-plus.fa-xl
+            %a
+              %i.fa-sharp.fa-solid.fa-heart.fa-xl
+            - if user_signed_in?
+              %a{"data-method" => "delete", :href => destroy_user_session_path}
+                %i.fa.fa-user.fa-xl
+            - else
+              %a{:href => new_user_session_path}
+                %i.fa-solid.fa-right-to-bracket.fa-xl
+      - if flash.present?
+        .flash
+          - flash.each do |key, value|
+            %div{:class => key}= value
     / Main content
     %main.container{:style => "min-height: 500px;"}
       = yield
@@ -40,10 +45,6 @@
     %footer.container.footer
       %nav.navbar.d-flex
         %p © 2022 INSTAGRAM
-    %header
-      - if flash.present?
-        .flash
-          - flash.each do |key, value|
-            %div{:class => key}
-              = value
+   
+      
     
