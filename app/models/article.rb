@@ -13,7 +13,7 @@
 #  index_articles_on_user_id  (user_id)
 #
 class Article < ApplicationRecord
-  has_one_attached :eyecatch
+  has_many_attached :images
   
   validates :content, presence: true
 

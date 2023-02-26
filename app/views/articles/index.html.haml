@@ -2,9 +2,10 @@
 
   - @articles.each do |article|
     .card
-      - if article.eyecatch.attached?
-        .card_image
-          = image_tag article.eyecatch
+      - if article.images.attached?
+        - article.images.each do |image|
+          .card_image
+            = image_tag image.variant(resize: '100x100').processed
       .card_content
         .card_content
           = article.content
