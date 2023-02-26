@@ -22,7 +22,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
+  has_many :articles, dependent: :destroy
   has_one :profile, dependent: :destroy
 
   def display_name
@@ -40,5 +41,4 @@ class User < ApplicationRecord
       'default-avatar.png'
     end
   end
-
 end

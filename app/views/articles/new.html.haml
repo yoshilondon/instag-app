@@ -4,5 +4,8 @@
       %li= message
   = form_with(model: @article, url: articles_path, method: 'post', local: true) do |f|
     %div
+      = f.label :image, '投稿画像'
+      = f.file_field :images, multiple: true
+    %div
       = f.text_area :content
     = f.submit '保存'
