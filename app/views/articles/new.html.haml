@@ -1,11 +1,29 @@
 .container
-  %ul
-    - @article.errors.full_messages.each do |message|
-      %li= message
   = form_with(model: @article, url: articles_path, method: 'post', local: true) do |f|
-    %div
-      = f.label :image, '投稿画像'
-      = f.file_field :images, multiple: true
-    %div
-      = f.text_area :content
-    = f.submit '保存'
+    .form_header
+      .cancelbtn 
+        = link_to 'Cance', root_path 
+      %div
+        %p.status_button Status
+      #postBtn 
+        %p Post
+
+    .article_card
+      .article_author 
+        .article_author_image
+          = image_tag @article.user.avatar_image, class: 'avatar-image'
+        .article_author_name
+          = @article.author_name
+      %ul
+        - @article.errors.full_messages.each do |message|
+          %li= message
+        -# = form_with(model: @article, url: articles_path, method: 'post', local: true) do |f|
+        %div
+          = f.text_field :content, placeholder: "What's on your mind?", class: 'post_content_form'
+        %div
+          = f.label :images, '+ Album', class: 'images_input_btn' do
+            %i.images_form_name + Album 
+            = f.file_field :images, multiple: true, class: 'hidden'
+        
+        = f.submit '保存', class: 'hidden'
+
