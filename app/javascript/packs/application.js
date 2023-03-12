@@ -20,17 +20,26 @@ ActiveStorage.start()
 
 document.addEventListener('DOMContentLoaded', () => {
   const update = document.getElementById('profile_avatar')
-  update.addEventListener('change', (e) =>{
-    const file = update.files[0];   
-    const reader = new FileReader(); 
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      const image = reader.result;
-      console.log(image);
-      document.querySelector('.avatar-image').setAttribute('src', image);
-    }
-    $('.submit-btn').removeClass('hidden')
+  if (update) {
+    update.addEventListener('change', (e) => {
+      const file = update.files[0];   
+      const reader = new FileReader(); 
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const image = reader.result;
+        console.log(image);
+        document.querySelector('.avatar-image').setAttribute('src', image);
+      }
+      $('.submit-btn').removeClass('hidden')
 
+    });
+  }
+});
+
+// articles/new 投稿ボタン（Post）の設定
+document.addEventListener('DOMContentLoaded', () => {
+  $("#postBtn").on('click', () => {
+    $('form').submit();
   });
 });
 

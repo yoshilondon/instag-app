@@ -1,20 +1,35 @@
 .container
+  .index_header
+    .camerabtn
+      = link_to new_article_path do 
+        %button
+          %i.fa-solid.fa-camera-retro
 
   - @articles.each do |article|
     .card
+      .card_detail
+        = image_tag article.user.avatar_image
+        %div
+          %h3= article.author_name
+          %p= post_time(article.created_at)
       .card_grid
         - if article.images.attached?
           - article.images.each do |image|
             .card_image
               = image_tag image.variant(resize: '170!x100').processed, class: 'card_image_large'
       .card_content
-        .card_content
-          = article.content
-        .card_heart
-          = image_tag 'heart.png'
-          %span 23
-        .card_detail
-          = image_tag 'default-avatar.png'
-          %div
-            %p cohki0305
-            %p 2020/4/16
+        .card_icon
+          .card_icon_heart
+            = image_tag 'heart.png'
+          .card_icon_comment 
+            = image_tag 'message.png'
+          .card_icon_share
+            = image_tag 'share.png'
+        %p= "Maki and 100 other liked your post"
+        .card_content_caption
+          %h3= article.author_name
+          %p= article.content
+        -# .card_heart
+        -#   = image_tag 'heart.png'
+        -#   %span 23
+        
