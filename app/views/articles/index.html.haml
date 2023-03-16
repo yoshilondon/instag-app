@@ -6,6 +6,7 @@
           %i.fa-solid.fa-camera-retro
 
   - @articles.each do |article|
+    -# = link_to article_path(article) do
     .card
       .card_detail
         = image_tag article.user.avatar_image
@@ -29,5 +30,6 @@
         %p= "Maki and 100 other liked your post"
         .card_content_caption
           %h3= article.author_name
-          %p= article.content
-        
+          = link_to article_path(article) do
+            %p= article.content
+      
