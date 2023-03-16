@@ -48,7 +48,8 @@ $avatar-size: 32px;
   }
 
   &_icon {
-    display: flex;
+    display: flex;   
+
     &_heart {
       width: $heart-size;
       height: $heart-size;
