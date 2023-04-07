@@ -20,16 +20,23 @@
               = image_tag image.variant(resize: '170!x100').processed, class: 'card_image_large'
       .card_content
         .card_icon
-          .card_icon_heart
-            = image_tag 'heart.svg'
-          .card_icon_comment 
-            = image_tag 'message.png'
-          .card_icon_share
-            = link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do 
-              = image_tag 'share.png'
-        %p= "Maki and 100 other liked your post"
-        .card_content_caption
-          %h3= article.author_name
-          = link_to article_path(article) do
-            %p= article.content
+          - if user_signed_in?
+            - if current_user.has_liked?(article)
+              .card_icon_heart
+                = link_to article_like_path(article), data: { method: 'delete' } do
+                  = image_tag 'heart-active.svg'
+            - else
+              .card_icon_heart
+                = link_to article_like_path(article), data: { method: 'post' } do
+                  = image_tag 'heart.svg'
+            .card_icon_comment 
+              = image_tag 'message.png'
+            .card_icon_share
+              = link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do 
+                = image_tag 'share.png'
+      %p= "Maki and #{article.like_count} other liked your post"
+      .card_caption
+        %h3= article.author_name
+        = link_to article_path(article) do
+          %p= article.content
       

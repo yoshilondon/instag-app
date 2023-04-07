@@ -67,6 +67,7 @@ $avatar-size: 32px;
   p {
     margin-top: 10px;
     margin-bottom: 0px;
+    margin-left: 10px;
   }  
 
   &_detail {
@@ -92,14 +93,15 @@ $avatar-size: 32px;
 
   &_content {
     padding: 16px 16px;
-    &_caption {
-      display: flex;
-      align-items: center;
+  }
+
+  &_caption {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
       p {
-        margin-left: 5px;
         margin-top: 0px;
       }
-    }
   }
 
   .card_grid {
