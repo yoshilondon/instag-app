@@ -14,12 +14,16 @@
 #
 class Article < ApplicationRecord
   has_many_attached :images
-  
   validates :content, presence: true
 
+  has_many :likes, dependent: :destroy
   belongs_to :user
 
   def author_name
     user.display_name
+  end
+
+  def like_count
+    likes.count
   end
 end
