@@ -25,8 +25,9 @@
               = image_tag 'heart-active.svg', class: 'active-heart'
             .card_icon_heart.hidden.inactive-heart{:id => "#{article.id}"}
               = image_tag 'heart.svg', class: 'inactive-heart'
-            .card_icon_comment 
-              = image_tag 'message.png'
+            .card_icon_comment
+              = link_to new_article_comment_path(article) do  
+                = image_tag 'message.png'
             .card_icon_share
               = link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do 
                 = image_tag 'share.png'

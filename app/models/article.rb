@@ -16,6 +16,7 @@ class Article < ApplicationRecord
   has_many_attached :images
   validates :content, presence: true
 
+  has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   belongs_to :user
 
