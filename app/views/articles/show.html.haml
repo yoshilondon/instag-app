@@ -13,10 +13,6 @@
     .card_content
       .card_icon
         - if user_signed_in?
-          .card_icon_heart.hidden.active-heart
-            = image_tag 'heart-active.svg'
-          .card_icon_heart.hidden.inactive-heart
-            = image_tag 'heart.svg'
           .card_icon_comment 
             = image_tag 'message.png'
           .card_icon_share
@@ -26,3 +22,5 @@
       .card_content_caption
         %h3= @article.author_name
         %p= @article.content
+
+= javascript_pack_tag 'article'
