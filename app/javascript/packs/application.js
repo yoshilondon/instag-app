@@ -7,8 +7,6 @@ import Rails from "@rails/ujs"
 // import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import $ from 'jquery'
-import axios from 'axios'
 
 Rails.start()
 // Turbolinks.start()
@@ -18,30 +16,9 @@ ActiveStorage.start()
 //= require popper
 //= require bootstrap
 
-document.addEventListener('DOMContentLoaded', () => {
-  const update = document.getElementById('profile_avatar')
-  if (update) {
-    update.addEventListener('change', (e) => {
-      const file = update.files[0];   
-      const reader = new FileReader(); 
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        const image = reader.result;
-        console.log(image);
-        document.querySelector('.avatar-image').setAttribute('src', image);
-      }
-      $('.submit-btn').removeClass('hidden')
 
-    });
-  }
-});
 
-// articles/new 投稿ボタン（Post）の設定
-document.addEventListener('DOMContentLoaded', () => {
-  $("#postBtn").on('click', () => {
-    $('form').submit();
-  });
-});
+
 
 // $('.profilePage_image').on('click', () => {
 //   axios.get('/profile')
