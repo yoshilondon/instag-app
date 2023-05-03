@@ -1,0 +1,26 @@
+.conteiner 
+  .comment_header
+    .comment_back_icon.left
+      = link_to image_tag('back_arrow.png'), :back 
+    .title.center
+      %h2 Comment
+
+.container 
+  .card_detail
+    = image_tag @article.user.avatar_image
+    %div
+      %h3= @article.author_name
+      %p= post_time(@article.created_at)
+      %p= @article.content
+
+-# .container
+-#   .comments_container
+-#   - @comments.each do |comment|
+-#     .comment_user_detail 
+-#       = image_tag @article.user.avatar_image
+-#       %div
+-#         %h3= @article.author_name
+-#         %p= post_time(comment.created_at)
+-#         %p= comment.content
+
+= javascript_pack_tag 'article'

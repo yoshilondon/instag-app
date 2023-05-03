@@ -1,4 +1,10 @@
 .container#article-show{data: {article_id: @article.id}}
+  .user_top 
+    .return_page 
+      = link_to :back do
+        = image_tag 'back_arrow.png'
+    .account_name 
+      Comment
   .card
     .card_detail
       = image_tag @article.user.avatar_image
@@ -14,7 +20,8 @@
       .card_icon
         - if user_signed_in?
           .card_icon_comment 
-            = image_tag 'message.png'
+            = link_to new_article_comment_path(@article) do
+              = image_tag 'message.png'
           .card_icon_share
             = link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do 
               = image_tag 'share.png'
@@ -22,5 +29,11 @@
       .card_content_caption
         %h3= @article.author_name
         %p= @article.content
+  .comments_container
+  .comment-text-area
+    = text_area_tag :comment_content, '', class: 'sm'
+    .btn-secondary
+      = image_tag 'message.png', class: 'add-comment-button'
+      
 
 = javascript_pack_tag 'article'
