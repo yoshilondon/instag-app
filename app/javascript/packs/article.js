@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     axios.get(`/articles/${articleId}/like`)
       .then((response) => {
-        console.log(response)
         const hasLiked = response.data.hasLiked
         if (hasLiked) {
           $(`#${articleId}.active-heart`).removeClass('hidden')
@@ -61,5 +60,48 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log(e)
         })
     })  
+  })
+
+  
+  const dataset = $('#article-show').data()
+  const articleId = dataset.articleId
+
+  console.log(articleId)
+
+  axios.get(`/articles/${articleId}/comments`)
+    .then((response) => {
+      console.log(response.data)
+      const comments = response.data
+      comments.forEach((comment) => {
+        $('.comments_container').append(
+          `<div class="comment_user_detail">
+            <div class="comment_user_image"><img src="${comment.user.profile.avatar_url}" ></div>
+            <div class="article_comment"><h6>${comment.user.display_name}</h6><p>${comment.content}</p></div>
+          </div>`
+        )
+      })
+    })
+    .catch(function(error) {
+      console.log(error)
+    })
+
+  $('.add-comment-button').on('click', () => {
+    const content = $('#comment_content').val()
+    if (!content) {
+      window.alert('Please enter your comment')
+    } else {
+      axios.post(`/articles/${articleId}/comments`, {
+        comment: {content: content}
+      })
+      .then((res) => {
+        const comment = res.data
+        $('.comments-container').append(
+          `<div class="comment_user_detail">
+            <div class="comment_user_image"><img src="${comment.user.profile.avatar_url}" ></div>
+            <div class="article_comment"><h6>${comment.user.display_name}</h6><p>${comment.content}</p></div>
+          </div>`
+        )
+      })
+    }
   })
 })

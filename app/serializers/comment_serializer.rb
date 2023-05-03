@@ -14,13 +14,8 @@
 #  index_comments_on_article_id  (article_id)
 #  index_comments_on_user_id     (user_id)
 #
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+class CommentSerializer < ActiveModel::Serializer
+  attributes :id, :content, :user_id
+  
+  belongs_to :user, serializer: UserSerializer
+end

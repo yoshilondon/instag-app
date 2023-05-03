@@ -6,7 +6,6 @@
           %i.fa-solid.fa-camera-retro
 
   - @articles.each do |article|    
-    -# = link_to article_path(article) do
     .card#article-show{data: {article_id: article.id}}
       .card_detail
         = image_tag article.user.avatar_image
@@ -34,7 +33,7 @@
       %p= "Maki and #{article.like_count} other liked your post"
       .card_caption
         %h3= article.author_name
-        = link_to article_path(article) do
-          %p= article.content
+      = link_to article_path(article) do
+        %p= article.content
 
 = javascript_pack_tag 'article' 
