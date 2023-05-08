@@ -1,39 +1,60 @@
 .container
-  .index_header
-    .camerabtn
-      = link_to new_article_path do 
-        %button
-          %i.fa-solid.fa-camera-retro
+  .title_header
+    -# %nav.navbar.navbar-light.bg-light.d-flex
+    .logo
+      -# .camerabtn
+      -#   = link_to new_article_path do 
+      -#     %button
+      -#       %i.fa-solid.fa-camera-retro
+      .title
+        %p Instagram
+    .header_icon 
+      .camerabtn
+        = link_to new_article_path do 
+          %button
+            %i.fa-solid.fa-camera-retro
+      .user-section
+        - if user_signed_in?
+          %a{"data-method" => "delete", :href => destroy_user_session_path}
+            %i.fa.fa-user.fa-xl
+        - else
+          %a{:href => new_user_session_path}
+            %i.fa-solid.fa-right-to-bracket.fa-xl
+  - if flash.present?
+    .flash
+      - flash.each do |key, value|
+        %div{:class => key}= value
 
-  - @articles.each do |article|    
-    .card#article-show{data: {article_id: article.id}}
-      .card_detail
-        = image_tag article.user.avatar_image
-        %div
+  .cards_container
+    - @articles.each do |article|    
+      .card#article-show{data: {article_id: article.id}}
+        .card_detail
+          = image_tag article.user.avatar_image
+          %div
+            %h3= article.author_name
+            %p= post_time(article.created_at)
+        .card_grid
+          - if article.images.attached?
+            - article.images.each do |image|
+              .card_image
+                = image_tag image.variant(resize: '170!x100').processed, class: 'card_image_large'
+        .card_content
+          .card_icon
+            - if user_signed_in?
+              .card_icon_heart.hidden.active-heart{:id => "#{article.id}"}
+                = image_tag 'heart-active.svg', class: 'active-heart'
+              .card_icon_heart.hidden.inactive-heart{:id => "#{article.id}"}
+                = image_tag 'heart.svg', class: 'inactive-heart'
+              .card_icon_comment
+                = link_to new_article_comment_path(article) do  
+                  = image_tag 'message.png'
+              .card_icon_share
+                = link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do 
+                  = image_tag 'share.png'
+        %p= "Maki and #{article.like_count} other liked your post"
+        .card_caption
           %h3= article.author_name
-          %p= post_time(article.created_at)
-      .card_grid
-        - if article.images.attached?
-          - article.images.each do |image|
-            .card_image
-              = image_tag image.variant(resize: '170!x100').processed, class: 'card_image_large'
-      .card_content
-        .card_icon
-          - if user_signed_in?
-            .card_icon_heart.hidden.active-heart{:id => "#{article.id}"}
-              = image_tag 'heart-active.svg', class: 'active-heart'
-            .card_icon_heart.hidden.inactive-heart{:id => "#{article.id}"}
-              = image_tag 'heart.svg', class: 'inactive-heart'
-            .card_icon_comment
-              = link_to new_article_comment_path(article) do  
-                = image_tag 'message.png'
-            .card_icon_share
-              = link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do 
-                = image_tag 'share.png'
-      %p= "Maki and #{article.like_count} other liked your post"
-      .card_caption
-        %h3= article.author_name
-      = link_to article_path(article) do
-        %p= article.content
+        = link_to article_path(article) do
+          %p= article.content
 
 = javascript_pack_tag 'article' 

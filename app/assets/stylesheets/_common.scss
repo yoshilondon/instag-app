@@ -65,3 +65,44 @@ input {
   color: #00ffff;
   background-color: white;
 }
+
+.title_header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin: 20px 5px;
+  // max-width: 375px;
+
+  p{
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  .header_icon {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 5px;
+
+    .camerabtn {
+      order: 1;
+      margin-bottom: 10px;
+    }
+
+    .user-section {
+      order: 2; 
+      margin-top: 2px;     
+    }
+  }
+}
+
+.cards_container {
+  margin-top: 60px;
+}
+
+

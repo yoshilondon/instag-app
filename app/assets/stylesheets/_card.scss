@@ -2,10 +2,25 @@ $heart-size: 16px;
 $avatar-size: 32px;
 
 .form_header {
-  margin: 10px 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  margin: 20px 10px;
   font-size: 15px;
   display:flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  // align-items: center;
+}
+
+.return_page {
+  order: 1;
+}
+
+.page_name {
+  margin: 0 30%;
+  order: 2;
 }
 
 
@@ -37,6 +52,7 @@ $avatar-size: 32px;
 }
 
 .card {
+  margin-top: 60px;
   background-color: white;
   // margin: 16px 0;
   cursor: pointer;
@@ -137,27 +153,3 @@ $avatar-size: 32px;
     grid-row: 2 / 3;
   }
 }
-
-.camerabtn {
-  cursor: pointer;
-  margin-top: 5px;
-  margin-bottom: 20px;
-}
-
-  
-
-  // &_image {
-  //   height: 180px;
-  //   position: relative;
-  //   overflow: hidden;
-
-  //   img {
-  //     position: absolute;
-  //     top: 50%;
-  //     left: 50%;
-  //     -webkit-transform: translate(-50%, -50%);
-  //     -ms-transform: translate(-50%, -50%);
-  //     transform: translate(-50%, -50%);
-  //     width: 100%;
-  //   }
-  // }

@@ -1,10 +1,10 @@
 .container#article-show{data: {article_id: @article.id}}
-  .user_top 
+  .form_header  
     .return_page 
-      = link_to :back do
+      = link_to root_path do
         = image_tag 'back_arrow.png'
-    .account_name 
-      Comment
+    .page_name 
+      %p Comments
   .card
     .card_detail
       = image_tag @article.user.avatar_image
@@ -30,10 +30,19 @@
         %h3= @article.author_name
         %p= @article.content
   .comments_container
-  .comment-text-area
-    = text_area_tag :comment_content, '', class: 'sm'
-    .btn-secondary
-      = image_tag 'message.png', class: 'add-comment-button'
+  
+  -# .comment-text-area
+  -#   = text_area_tag :comment_content, '', class: 'sm'
+  -#   .btn-secondary
+  -#     = image_tag 'message.png', class: 'add-comment-button'
+
+.comment_footer
+  %nav.navbar.d-flex
+    .comment-text-area
+      = text_area_tag :comment_content, '', class: 'sm'
+      .btn-secondary
+        = image_tag 'message.png', class: 'add-comment-button'
+
       
 
 = javascript_pack_tag 'article'
