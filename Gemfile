@@ -31,6 +31,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'devise'
 gem 'hamlit'
 gem 'jquery-rails'
+gem 'sidekiq'
 
 
 
