@@ -1,6 +1,8 @@
 class NoticeMailer < ApplicationMailer
-  def new_comment(user)
+  def new_comment(user, content, article)
     @user = user
-    mail to: user.email, subject: '【お知らせ】コメントがありました'
+    @content = content
+    @article = article
+    mail to: user.email, subject: '【お知らせ】新しいコメントがつきました'
   end
 end

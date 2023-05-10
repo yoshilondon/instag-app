@@ -24,6 +24,6 @@ class Comment < ApplicationRecord
 
   private
   def send_email
-    NoticeMailer.new_comment(user).deliver_now
+    NoticeMailer.new_comment(user, content, article).deliver_later
   end
 end

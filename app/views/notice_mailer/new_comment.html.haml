@@ -1,4 +1,5 @@
-%p #{@user.email}さん 
-%p 新規のコメントが届きました。
+%p @#{@article.user.name}さん 
+%p あなたの記事に以下のコメントがつきました。
+%p #{@content}
 
--# = link_to 'プロフィールを確認する', account_url
+= link_to 'コメントを確認する', article_url(@article)
