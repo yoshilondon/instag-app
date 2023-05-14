@@ -11,6 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Comment追加のメソッド設定
+const appendNewComment = (comment) => {
+  $('.comments_container').append(
+    `<div class="comment_user_detail">
+      <div class="comment_user_image"><img src="${comment.user.profile.avatar_url}" ></div>
+      <div class="article_comment"><h6>${comment.user.display_name}</h6><p>${comment.content}</p></div>
+    </div>`
+  )
+}
+
 // Likeのハートの表示切替
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -73,12 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(response.data)
       const comments = response.data
       comments.forEach((comment) => {
-        $('.comments_container').append(
-          `<div class="comment_user_detail">
-            <div class="comment_user_image"><img src="${comment.user.profile.avatar_url}" ></div>
-            <div class="article_comment"><h6>${comment.user.display_name}</h6><p>${comment.content}</p></div>
-          </div>`
-        )
+        appendNewComment(comment)
       })
     })
     .catch(function(error) {
@@ -95,12 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then((res) => {
         const comment = res.data
-        $('.comments_container').append(
-          `<div class="comment_user_detail">
-            <div class="comment_user_image"><img src="${comment.user.profile.avatar_url}" ></div>
-            <div class="article_comment"><h6>${comment.user.display_name}</h6><p>${comment.content}</p></div>
-          </div>`
-        )
+        appendNewComment(comment)
         $('#comment_content').val('')
       })
     }

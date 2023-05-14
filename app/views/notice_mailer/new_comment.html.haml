@@ -1,0 +1,4 @@
+%p @#{@commented_user.name}さん 
+%p あなたの記事に@#{@comment_user.name}さんから以下のコメントがつきました。
+%p == #{@content} == 
+= link_to 'コメントを確認する', article_url(@article)

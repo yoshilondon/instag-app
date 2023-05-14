@@ -31,6 +31,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'devise'
 gem 'hamlit'
 gem 'jquery-rails'
+gem 'sidekiq'
 
 
 
@@ -60,6 +61,8 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-rails'
   gem 'spring'
+  gem 'letter_opener'
+  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :test do
