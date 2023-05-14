@@ -23,7 +23,13 @@ class Comment < ApplicationRecord
   after_create :send_email
 
   private
+
   def send_email
-    NoticeMailer.new_comment(user, content, article).deliver_later
+    @Users = User.all
+    @Users.each do |each_user|
+      if content.include?("@#{each_user.name}")
+        NoticeMailer.new_comment(user, content, each_user, article).deliver_later
+      end
+    end
   end
 end
