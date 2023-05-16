@@ -7,7 +7,8 @@
       %p Comments
   .card
     .card_detail
-      = image_tag @article.user.avatar_image
+      = link_to account_path(@article.user) do
+        = image_tag @article.user.avatar_image
       %div
         %h3= @article.author_name
         %p= post_time(@article.created_at)
