@@ -1,3 +1,36 @@
+.profile_top {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+
+  // .return_page {
+  //   order: 1;
+  // }
+
+  .user_displayName{
+    // position: absolute;
+    // height: 24px;
+    // left: 38.13%;
+    // right: 38.4%;
+    // top: calc(57% - 24px/2 - 348px);
+
+    font-family: 'Poppins Medium';
+    font-size: 16px;
+    line-height: 19px;
+    // order: 2;
+    // display: flex;
+    // align-items: center;
+    // text-align: center;
+    margin-bottom: 10px;
+
+    color: #333A42;
+  }
+
+  // .actionButton {
+  //   order: 3;
+  // }
+}
+
 .profilePage {
   padding-top :32px;
   &_image{
@@ -18,24 +51,6 @@
     //   left: 50%;
     //   transform: translate(-50%,-50%);
     // }
-  }
-
-  &_user_displayName{
-    // position: absolute;
-    // height: 24px;
-    // left: 38.13%;
-    // right: 38.4%;
-    // top: calc(57% - 24px/2 - 348px);
-
-    font-family: 'Poppins Medium';
-    font-size: 16px;
-    line-height: 19px;
-    // display: flex;
-    // align-items: center;
-    text-align: center;
-    margin-bottom: 10px;
-
-    color: #333A42;
   }
 
   &_dataBox{

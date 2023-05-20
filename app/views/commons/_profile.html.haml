@@ -1,0 +1,36 @@
+.profilePage 
+  .container
+    .profile_top 
+      .profile_return_page 
+        = link_to root_path do
+          = image_tag 'back_arrow.png'
+      .user_displayName 
+        = user.display_name 
+      .actionButton
+        - if user == current_user 
+          = link_to 'Edit', edit_profile_path 
+        - else
+          - if current_user&.has_followed?(user)
+            = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'} 
+          - else
+            = link_to 'Follow', account_follows_path(user), data: {method: 'post'} 
+ 
+    .profilePage_image
+      = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+        = f.label :avatar do
+          = image_tag user.avatar_image, class: 'avatar-image'
+        %div
+          = f.file_field :avatar, class: 'hidden uploader' 
+          = f.submit 'SUBMIT', class: 'hidden submit-btn'
+
+    .profilePage_dataBox 
+      .profilePage_dataBox_inner 
+        %p 44
+        %p Posts 
+      .profilePage_dataBox_inner
+        %p 110
+        %p Followers
+      .profilePage_dataBox_inner 
+        %p 44
+        %p Following
+    
