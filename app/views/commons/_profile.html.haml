@@ -1,5 +1,5 @@
 .profilePage 
-  .container
+  .container#account-show{data: {account_id: @user.id, current_user_id: current_user.id}}
     .profile_top 
       .profile_return_page 
         = link_to root_path do
@@ -10,10 +10,16 @@
         - if user == current_user 
           = link_to 'Edit', edit_profile_path 
         - else
-          - if current_user&.has_followed?(user)
-            = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'} 
-          - else
-            = link_to 'Follow', account_follows_path(user), data: {method: 'post'} 
+          .actionButton.hidden.un_follow-button 
+            %p Unfollow
+            -# = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'} 
+          .actionButton.hidden.follow-button 
+            %p Follow
+            -# = link_to 'Follow', account_follows_path(user), data: {method: 'post'} 
+          -# - if current_user&.has_followed?(user)
+          -#   = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'} 
+          -# - else
+          -#   = link_to 'Follow', account_follows_path(user), data: {method: 'post'} 
  
     .profilePage_image
       = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
@@ -34,3 +40,4 @@
         %p 44
         %p Following
     
+= javascript_pack_tag 'account'
