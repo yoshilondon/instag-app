@@ -62,6 +62,10 @@ class User < ApplicationRecord
     followers.count
   end
 
+  def following_count
+    followings.count
+  end
+
   def prepare_profile
     profile || build_profile
   end  

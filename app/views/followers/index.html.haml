@@ -1,0 +1,13 @@
+.container 
+  .follow_top  
+    .return_page.left-element
+      = link_to root_path do
+        = image_tag 'back_arrow.png'
+    .page_name.center-element
+      %p Followers
+  .followers
+    - @followers.each do |follower|
+      .follower_detail
+        = image_tag follower.avatar_image
+        %p.follower_name= follower.display_name
+

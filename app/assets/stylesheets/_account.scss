@@ -1,0 +1,71 @@
+$heart-size: 16px;
+$avatar-size: 32px;
+
+.follow_top {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+
+  .center-element {
+    margin-left: auto;
+    margin-right: auto;
+    
+    p {
+      font-size: 20px;
+    }
+  }
+}
+
+.followers {
+  margin-top: 10px;
+  
+  .follower_detail {
+    margin-bottom: 30px;
+    display: flex;
+    height: 73px;
+    border-bottom: 1px solid #EEEEEE;
+  
+    .follower_name {
+      font-family: 'Poppins Medium';
+      font-size: 14px;
+      line-height: 16px;
+      align-items: center;
+      color: #333333;
+    }
+
+    img {
+      width: $avatar-size;
+      height: $avatar-size;
+      border-radius: 100%;
+      margin-right: 8px;
+    }
+  }
+}
+
+.followings {
+  margin-top: 10px;
+  
+  .following_detail {
+    margin-bottom: 30px;
+    display: flex;
+    height: 73px;
+    border-bottom: 1px solid #EEEEEE;
+  
+    .following_name {
+      font-family: 'Poppins Medium';
+      font-size: 14px;
+      line-height: 16px;
+      align-items: center;
+      color: #333333;
+    }
+
+    img {
+      width: $avatar-size;
+      height: $avatar-size;
+      border-radius: 100%;
+      margin-right: 8px;
+    }
+  }
+}
+
+  
