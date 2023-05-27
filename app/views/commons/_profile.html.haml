@@ -34,7 +34,11 @@
         %p 44
         %p Posts 
       .profilePage_dataBox_inner
-        %p#follower_number{data: {follower_count: user.follower_count}} #{@user.follower_count}
+        %p#follower_number{data: {follower_count: user.follower_count}} 
+          - if user == current_user
+            #{current_user.follower_count}
+          - else
+            #{@user.follower_count}
         %p Followers
       .profilePage_dataBox_inner 
         %p 44
