@@ -34,7 +34,7 @@
         %p 44
         %p Posts 
       .profilePage_dataBox_inner
-        %p 110
+        %p#follower_number{data: {follower_count: user.follower_count}} #{@user.follower_count}
         %p Followers
       .profilePage_dataBox_inner 
         %p 44

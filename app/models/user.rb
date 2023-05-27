@@ -58,6 +58,10 @@ class User < ApplicationRecord
     following_relationships.exists?(following_id: user.id)
   end
 
+  def follower_count
+    followers.count
+  end
+
   def prepare_profile
     profile || build_profile
   end  

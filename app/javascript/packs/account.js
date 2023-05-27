@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const dataset = $('#account-show').data()
   const accountId = dataset.accountId
   const currentUserId = dataset.currentUserId
+  var countNumber = $('#follower_number').data()
+  var followerCount = countNumber.followerCount
 
   axios.get(`/accounts/${accountId}/follows/${currentUserId}`)
     .then((response) => {
@@ -27,10 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
   $('.un_follow-button').on('click', () => {
     axios.post(`/accounts/${accountId}/unfollows`)
       .then((response) => {
-        console.log(response)
         if (response.data.status === 'ok') {
           $('.un_follow-button').addClass('hidden');
           $('.follow-button').removeClass('hidden');
+          followerCount = followerCount-1
+          $('#follower_number').text(`${followerCount}`)
         }
       })
       .catch((e) => {
@@ -42,10 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
   $(`.follow-button`).on('click', () => {
     axios.post(`/accounts/${accountId}/follows`)
       .then((response) => {
-        console.log(response)
         if (response.data.status === 'ok') {
           $(`.un_follow-button`).removeClass('hidden');
           $(`.follow-button`).addClass('hidden');
+          followerCount = followerCount+1
+          $('#follower_number').text(`${followerCount}`)
         }
       })
       .catch((e) => {
