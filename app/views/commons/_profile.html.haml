@@ -1,0 +1,50 @@
+.profilePage 
+  .container
+    .profile_top 
+      .profile_return_page 
+        = link_to root_path do
+          = image_tag 'back_arrow.png'
+      .user_displayName 
+        = user.display_name 
+      .actionButton
+        - if user == current_user 
+          = link_to 'Edit', edit_profile_path 
+        - else
+          .actionButton.hidden.un_follow-button#account-show{data: {account_id: @user.id, current_user_id: current_user.id}} 
+            %p Unfollow
+            -# = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'} 
+          .actionButton.hidden.follow-button#account-show{data: {account_id: @user.id, current_user_id: current_user.id}} 
+            %p Follow
+            -# = link_to 'Follow', account_follows_path(user), data: {method: 'post'} 
+          -# - if current_user&.has_followed?(user)
+          -#   = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'} 
+          -# - else
+          -#   = link_to 'Follow', account_follows_path(user), data: {method: 'post'} 
+ 
+    .profilePage_image
+      = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+        = f.label :avatar do
+          = image_tag user.avatar_image, class: 'avatar-image'
+        %div
+          = f.file_field :avatar, class: 'hidden uploader' 
+          = f.submit 'SUBMIT', class: 'hidden submit-btn'
+
+    .profilePage_dataBox 
+      .profilePage_dataBox_inner 
+        %p 44
+        %p Posts 
+      .profilePage_dataBox_inner
+        = link_to account_followers_path(user) do
+          %p#follower_number{data: {follower_count: user.follower_count}} 
+            - if user == current_user
+              #{current_user.follower_count}
+            - else
+              #{@user.follower_count}
+          %p Followers
+      .profilePage_dataBox_inner 
+        = link_to account_followings_path(user) do
+          %p.following_number
+            #{user.following_count}
+          %p Followings
+    
+= javascript_pack_tag 'account'

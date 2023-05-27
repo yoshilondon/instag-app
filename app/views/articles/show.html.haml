@@ -1,13 +1,14 @@
 .container#article-show{data: {article_id: @article.id}}
   .form_header  
-    .return_page 
+    .return_page.left-element
       = link_to root_path do
         = image_tag 'back_arrow.png'
-    .page_name 
+    .page_name.center-element
       %p Comments
   .card
     .card_detail
-      = image_tag @article.user.avatar_image
+      = link_to account_path(@article.user) do
+        = image_tag @article.user.avatar_image
       %div
         %h3= @article.author_name
         %p= post_time(@article.created_at)

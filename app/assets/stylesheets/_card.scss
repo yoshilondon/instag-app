@@ -2,6 +2,9 @@ $heart-size: 16px;
 $avatar-size: 32px;
 
 .form_header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
   position: fixed;
   top: 0;
   left: 0;
@@ -9,19 +12,30 @@ $avatar-size: 32px;
   z-index: 1;
   margin: 20px 10px;
   font-size: 15px;
-  display:flex;
-  justify-content: flex-start;
+
+  .center-element {
+    margin-left: auto;
+    margin-right: auto;
+    
+    p {
+      font-size: 20px;
+    }
+  }
+
+  
+  // display:flex;
+  // justify-content: flex-start;
   // align-items: center;
 }
 
-.return_page {
-  order: 1;
-}
+// .return_page {
+//   order: 1;
+// }
 
-.page_name {
-  margin: 0 30%;
-  order: 2;
-}
+// .page_name {
+//   // margin: 0 30%;
+//   // order: 2;
+// }
 
 
 
@@ -52,7 +66,8 @@ $avatar-size: 32px;
 }
 
 .card {
-  margin-top: 60px;
+  margin-top: 80px;
+  margin-bottom: 15px;
   background-color: white;
   // margin: 16px 0;
   cursor: pointer;
