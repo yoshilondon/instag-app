@@ -3,9 +3,9 @@ $avatar-size: 32px;
 .comment_footer {
   position: fixed;
   bottom: 0;
-  left: 0;
   z-index: 1;
   width: 100%;
+  max-width: 375px;
 
   .comment-text-area {
     display: flex;

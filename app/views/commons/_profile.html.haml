@@ -7,14 +7,15 @@
       .user_displayName 
         = user.display_name 
       .actionButton
-        - if user == current_user 
-          = link_to 'Edit', edit_profile_path 
-        - else
-          .actionButton.hidden.un_follow-button#account-show{data: {account_id: @user.id, current_user_id: current_user.id}} 
-            %p Unfollow
-            -# = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'} 
-          .actionButton.hidden.follow-button#account-show{data: {account_id: @user.id, current_user_id: current_user.id}} 
-            %p Follow
+        - if user_signed_in?
+          - if user == current_user 
+            = link_to 'Edit', edit_profile_path 
+          - else
+            .actionButton.hidden.un_follow-button#account-show{data: {account_id: @user.id, current_user_id: current_user.id}} 
+              %p Unfollow
+              -# = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'} 
+            .actionButton.hidden.follow-button#account-show{data: {account_id: @user.id, current_user_id: current_user.id}} 
+              %p Follow
             -# = link_to 'Follow', account_follows_path(user), data: {method: 'post'} 
           -# - if current_user&.has_followed?(user)
           -#   = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'} 
