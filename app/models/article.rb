@@ -14,7 +14,7 @@
 #
 class Article < ApplicationRecord
   has_many_attached :images
-  validates :content, presence: true
+  validates :content, presence: true, length: {minimum: 2}
 
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
