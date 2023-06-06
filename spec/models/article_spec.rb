@@ -1,19 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-  let!(:user) do
-    User.create!({
-      email: 'test@example.com',
-      password: 'password'
-    })
-  end
+  let!(:user) { create(:user) }
 
   context '記事コンテンツが入力されている場合' do
-    let!(:article) do
-      user.articles.build({
-        content: Faker::Lorem.characters(number: 100)
-      })
-    end
+    let!(:article) { build(:article, user: user) }
     # before do
     #   user = User.create!({
     #     email: 'test@example.com',
@@ -30,12 +21,12 @@ RSpec.describe Article, type: :model do
   end
 
   context '記事の文字が一文字の場合' do
-    let!(:article) do
-      user.articles.create({
-        content: Faker::Lorem.characters(number: 1)
-      })
-    end
+    let!(:article) { build(:article, content: Faker::Lorem.characters(number: 1), user: user) }
     
+    before do
+      article.save
+    end
+
     it '記事を保存できない' do
       expect(article.errors.messages[:content][0]).to eq('is too short (minimum is 2 characters)')
     end
