@@ -10,10 +10,7 @@ Rails.application.routes.draw do
   resource :timeline, only: [:show]
   resources :timelines, only: [:index]
 
-  resources :articles do
-    resources :comments, only: [:new, :create, :destroy, :index]
-    resource :like, only: [:show, :create, :destroy]
-  end
+  resources :articles
 
   resources :accounts, only: [:show] do
     resources :follows, only: [:show, :create]
@@ -23,4 +20,11 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: [:show, :edit, :update]
+
+  namespace :api, defaults: {format: :json} do
+    scope '/articles/:article_id' do
+      resources :comments, only: [:create, :destroy, :index]
+      resource :like, only: [:show, :create, :destroy]
+    end
+  end
 end
