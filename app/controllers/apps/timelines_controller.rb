@@ -1,6 +1,4 @@
-class TimelinesController < ApplicationController
-  before_action :authenticate_user!
-
+class Apps::TimelinesController < Apps::ApplicationController
   # 自分が投稿した記事で「いいね」が多い順に５件表示
   def index
     @articles = Article.joins(:likes)
